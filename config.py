@@ -12,29 +12,41 @@ terminal = "kitty"
 
 keys = Keybindings.keys
 
-groups = [Group(i) for i in "123456789"]
+# groups = [Group(i) for i in "123456789"]
+groups = [Group("1", exclusive=False, label=""),
+          Group("2", exclusive=False, label=""),
+          Group("3", exclusive=False, label=""),
+          Group("4", exclusive=False, label=""),
+          Group("5", exclusive=False, label=""),
+          Group("6", exclusive=False, persist=False, init=False, label=""),
+          Group("7", exclusive=False, persist=False, init=False, label=""),
+          Group("8", exclusive=False, persist=False, init=False, label=""),
+          Group("9", exclusive=False, persist=False, init=False, label="")
+          ]
+#     keys.extend([
+#         # mod1 + letter of group = switch to group
+#         Key([mod], i.name, lazy.group[i.name].toscreen(),
+#             desc="Switch to group {}".format(i.name)),
 
-for i in groups:
-    keys.extend([
-        # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
-            desc="Switch to group {}".format(i.name)),
-
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
-    ])
+#         # mod1 + shift + letter of group = switch to & move focused window to group
+#         Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
+#             desc="Switch to & move focused window to group {}".format(i.name)),
+#         # Or, use below if you prefer not to switch to that group.
+#         # # mod1 + shift + letter of group = move focused window to group
+#         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+#         #     desc="move focused window to group {}".format(i.name)),
+#     ])
 
 layouts = [
-    # layout.Columns(border_focus='#ffffff'),
+    layout.Columns(border_focus='#ef7981',
+                   border_normal='#122125',
+                   border_width=3,
+                   margin=4,
+                   ),
+    layout.Floating(border_focus_active='a4d8d8'),
     layout.MonadTall(border_focus='#a4d8d8',
                      border_focus_active='#a4d8d8', margin=4),
-    layout.Max(),
-    layout.Floating(border_focus_active='a4d8d8')
+    layout.Max()
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
@@ -47,7 +59,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Inter',
+    font='JetBrains Mono Nerd Font',
     fontsize=13,
     padding=10,
 )
@@ -57,26 +69,41 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.TextBox('', font='Roboto Mono Nerd Font', fontsize=14, padding=15),
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.TextBox('',
+                               font='Roboto Mono Nerd Font',
+                               fontsize=14,
+                               padding=15,
+                               foreground="#a4d8d8"),
+                widget.Sep(padding=1, linewidth=0, size_percent=5),
+                widget.TextBox('', padding=0, foreground="#a4d8d8", fontsize=17),
+                widget.Sep(padding=7, linewidth=0, size_percent=5),
+                # widget.CurrentLayout(),
+                widget.GroupBox(active='#af93b9',
+                                fontsize=14,
+                                disable_drag=True,
+                                highlight_method='text',
+                                inactive='#4f4f4b',
+                                this_current_screen_border='#ef7981',
+                                padding_x=6),
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("custom config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn",
-                               foreground="#d75f5f"),
-                # widget.Systray(),
-                widget.Clock(format='%a %I:%M %p'),
-                widget.QuickExit(),
+                widget.Spacer(),
+                widget.WindowName(format=" {state}{name}",
+                                  width=bar.CALCULATED,
+                                  max_chars=60,
+                                  foreground="ecb09a",
+                                  padding=0,
+                                  empty_group_string=" Desktop"),
+                widget.Spacer(),
+                widget.Spacer(length=10),
+                widget.PulseVolume(padding=0, 
+                                   foreground="#ddc3cd",
+                                   limit_max_volume=True),
+                widget.Spacer(length=20),
+                widget.Clock(format='%a %I:%M %p', padding=0, foreground="#ddc3cd"),
+                widget.Spacer(length=20)
             ],
             35,
-            background='122125',
+            background='#122125',
             margin=[10, 10, 2, 10]
         ),
     ),
@@ -106,7 +133,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
     Match(wm_class='galculator')
-])
+], border_focus="#122125")
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
