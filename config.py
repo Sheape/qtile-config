@@ -12,7 +12,6 @@ terminal = "kitty"
 
 keys = Keybindings.keys
 
-# groups = [Group(i) for i in "123456789"]
 groups = [Group("1", exclusive=False, label=""),
           Group("2", exclusive=False, label=""),
           Group("3", exclusive=False, label=""),
@@ -23,29 +22,15 @@ groups = [Group("1", exclusive=False, label=""),
           Group("8", exclusive=False, persist=False, init=False, label=""),
           Group("9", exclusive=False, persist=False, init=False, label="")
           ]
-#     keys.extend([
-#         # mod1 + letter of group = switch to group
-#         Key([mod], i.name, lazy.group[i.name].toscreen(),
-#             desc="Switch to group {}".format(i.name)),
-
-#         # mod1 + shift + letter of group = switch to & move focused window to group
-#         Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-#             desc="Switch to & move focused window to group {}".format(i.name)),
-#         # Or, use below if you prefer not to switch to that group.
-#         # # mod1 + shift + letter of group = move focused window to group
-#         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-#         #     desc="move focused window to group {}".format(i.name)),
-#     ])
 
 layouts = [
-    layout.Columns(border_focus='#ef7981',
+   layout.Columns(border_focus='#ef7981',
                    border_normal='#122125',
                    border_width=3,
                    margin=4,
                    ),
     layout.Floating(border_focus_active='a4d8d8'),
-    layout.MonadTall(border_focus='#a4d8d8',
-                     border_focus_active='#a4d8d8', margin=4),
+
     layout.Max()
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -94,7 +79,8 @@ screens = [
                                   padding=0,
                                   empty_group_string=" Desktop"),
                 widget.Spacer(),
-                widget.Spacer(length=10),
+                widget.TextBox('奔', foreground="#ddc3cd", fontsize=16),
+                widget.Spacer(length=3),
                 widget.PulseVolume(padding=0, 
                                    foreground="#ddc3cd",
                                    limit_max_volume=True),

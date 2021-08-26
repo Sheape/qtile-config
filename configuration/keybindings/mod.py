@@ -8,7 +8,10 @@ class Keys:
         enter = "Return"
         tab = "Tab"
 
-    # This Vim class isn't for any vim or programs that use vim. It is only for the wm.
+    # This Vim class isn't for any vim or
+    # programs that use vim. It is only
+    # for the window manager.
+
     class Vim:
         left = 'y'
         right = 'o'
