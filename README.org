@@ -1,4 +1,4 @@
-#+TITLE: Qtile Config README
+#+TITLE: My Qtile Config
 
 * Table of Contents :toc:
 - [[#about][About]]
@@ -22,27 +22,27 @@
 
   *WARNING:* My script requires *root* privileges from the user and will modify the /etc directory alongside other stuff. It is recommeded to only use this if you recently have reset your hard drive and have a fresh installation of Arch linux.
 
-- To install qtile, launch the terminal or TTY and type the following command.
-- =sudo pacman -S qtile=
+- To install qtile, launch the terminal or TTY and type the following command. \\
+- =sudo pacman -S qtile= \\
 
-- If you don't have sudo install (most likely because you have a fresh installation of arch linux). You can type the following commands.
+- If you don't have sudo install (most likely because you have a fresh installation of arch linux). You can type the following commands. \\
 
-- To enter the root user.
-- =su=
-- Type your root password and type the next command which would install qtile.
-- =pacman -S qtile=
+- To enter the root user.\\
+  =su=\\
+- Type your root password and type the next command which would install qtile. \\
+  =pacman -S qtile= \\
 
-- After the installation, you can now logout in your current session, or if you are on TTY you can reboot your machine.
+- After the installation, you can now logout in your current session, or if you are on TTY you can reboot your machine. \\
 
 *** Debian/Ubuntu
-- The scripts that I provided doesn't have any installation for Ubuntu/Debian, so you have to install it manually in the terminal.
+- The scripts that I provided doesn't have any installation for Ubuntu/Debian, so you have to install it manually in the terminal. \\
 
-- To install qtile in Debian/Ubuntu or if the distro is based on either of them, launch the terminal or TTY and type the following command.
+- To install qtile in Debian/Ubuntu or if the distro is based on either of them, launch the terminal or TTY and type the following command. \\
 
-- Update your system and upgrade it if it's necessary.
-- =sudo apt update && sudo apt upgrade=
+- Update your system and upgrade it if it's necessary. \\
+  =sudo apt update && sudo apt upgrade=
 
-- Install qtile using apt package manager.
-- =sudo apt install qtile=
+- Install qtile using apt package manager. \\
+  =sudo apt install qtile=
 
-- Logout from your current session or reboot and login with Qtile being the current session enabled.
+- Logout from your current session or reboot and login with Qtile being the current session enabled. \\
