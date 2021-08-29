@@ -17,7 +17,7 @@ class Keybindings:
         Key([Keys.Modifier.mod_key], Keys.Modifier.enter,
             lazy.spawn("alacritty"), desc="Launch terminal"),
         Key([Keys.Modifier.mod_key], 's', lazy.spawn(
-            "scrot -select")),
+            "scrot '%Y_%m_%d___%I:%M%p.png' -select -e 'mv $f ~/Pictures/Screenshots/'")),
     ]
 
 keybindings = Keybindings.keys
