@@ -8,6 +8,7 @@ from configuration.keybindings.workspace import Workspace
 from configuration.keybindings.system import System
 from configuration.keybindings.layout import Layout
 from configuration.keybindings.rofi import Rofi
+from configuration.keybindings.apps import Apps
 
 class Keybindings:
     # This class is only here to combine all the
@@ -17,7 +18,7 @@ class Keybindings:
         Key([Keys.Modifier.mod_key], Keys.Modifier.enter,
             lazy.spawn("alacritty"), desc="Launch terminal"),
         Key([Keys.Modifier.mod_key], 's', lazy.spawn(
-            "scrot '%Y_%m_%d___%I:%M%p.png' -select -e 'mv $f ~/Pictures/Screenshots/'")),
+            "zsh -c 'maim --select | xclip -selection clipboard -target image/png'")),
     ]
 
 keybindings = Keybindings.keys
@@ -27,3 +28,4 @@ keybindings.extend(Workspace.keys)
 keybindings.extend(System.keys)
 keybindings.extend(Layout.keys)
 keybindings.extend(Rofi.keys)
+keybindings.extend(Apps.keys)

@@ -1,8 +1,11 @@
 from typing import List
 
-from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import bar, layout, widget, hook
+from libqtile.config import Click, Drag, Group, Match, Screen
 from libqtile.lazy import lazy
+
+import os
+import subprocess
 
 from configuration.keybindings.mod import Keys
 from configuration.keybindings.keys import Keybindings
@@ -58,12 +61,12 @@ screens = [
                                font='Roboto Mono Nerd Font',
                                fontsize=14,
                                padding=15,
-                               foreground="#a4d8d8"),
+                               foreground="#ef7981"),
                 widget.Sep(padding=1, linewidth=0, size_percent=5),
-                widget.TextBox('', padding=0, foreground="#a4d8d8", fontsize=17),
+                widget.TextBox('', padding=0, foreground="#ef7981", fontsize=17, font="JetBrains Mono Nerd Font"),
                 widget.Sep(padding=7, linewidth=0, size_percent=5),
                 # widget.CurrentLayout(),
-                widget.GroupBox(active='#af93b9',
+                widget.GroupBox(active='#de9598',
                                 fontsize=14,
                                 disable_drag=True,
                                 highlight_method='text',
@@ -79,14 +82,16 @@ screens = [
                                   padding=0,
                                   empty_group_string=" Desktop"),
                 widget.Spacer(),
-                widget.TextBox('奔', foreground="#ddc3cd", fontsize=16),
+                widget.TextBox('奔', foreground="#ef7981", fontsize=16, font='JetBrains Mono Nerd Font'),
                 widget.Spacer(length=3),
                 widget.PulseVolume(padding=0, 
-                                   foreground="#ddc3cd",
+                                   foreground="#de9598",
                                    limit_max_volume=True),
                 widget.Spacer(length=20),
-                widget.Clock(format='%a %I:%M %p', padding=0, foreground="#ddc3cd"),
-                widget.Spacer(length=20)
+                widget.Clock(format='<span foreground="#ef7981">%a </span><span foreground="#de9598">%I:%M %p</span>', padding=0),
+                widget.Spacer(length=5),
+                widget.CurrentLayoutIcon(custom_icon_paths=[os.path.expanduser("~/.config/qtile/assets/icons/layouts")], scale=0.4, padding=0),
+                widget.Spacer(length=3)
             ],
             35,
             background='#122125',
@@ -128,6 +133,10 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = True
 
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.bin/autostart/autostart.sh'])
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
 # mailing lists, GitHub issues, and other WM documentation that suggest setting
@@ -136,4 +145,4 @@ auto_minimize = True
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "I use arch btw."
+wmname = "Candice"
