@@ -18,7 +18,7 @@ class Keybindings:
         Key([Keys.Modifier.mod_key], Keys.Modifier.enter,
             lazy.spawn("alacritty"), desc="Launch terminal"),
         Key([Keys.Modifier.mod_key], 's', lazy.spawn(
-            "zsh -c 'maim --select | xclip -selection clipboard -target image/png'")),
+            "zsh -c 'maim --select --hidecursor | xclip -selection clipboard -target image/png'")),
     ]
 
 keybindings = Keybindings.keys

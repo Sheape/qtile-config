@@ -15,15 +15,16 @@ terminal = "kitty"
 
 keys = Keybindings.keys
 
-groups = [Group("1", exclusive=False, label=""),
-          Group("2", exclusive=False, label=""),
-          Group("3", exclusive=False, label=""),
-          Group("4", exclusive=False, label=""),
-          Group("5", exclusive=False, label=""),
-          Group("6", exclusive=False, persist=False, init=False, label=""),
-          Group("7", exclusive=False, persist=False, init=False, label=""),
-          Group("8", exclusive=False, persist=False, init=False, label=""),
-          Group("9", exclusive=False, persist=False, init=False, label="")
+groups = [
+          Group("1", exclusive=False, label=""),
+          Group("2", exclusive=False, label=""),
+          Group("3", exclusive=False, label=""),
+          Group("4", exclusive=False, label="", matches=[Match(wm_class=["qalculate-gtk"])]),
+          Group("5", exclusive=False, label=""),
+          Group("6", exclusive=False, label=""),
+          Group("7", exclusive=False, label=""),
+          Group("8", exclusive=False, label=""),
+          Group("9", exclusive=False, label="")
           ]
 
 layouts = [
@@ -91,7 +92,13 @@ screens = [
                 widget.Clock(format='<span foreground="#ef7981">%a </span><span foreground="#de9598">%I:%M %p</span>', padding=0),
                 widget.Spacer(length=5),
                 widget.CurrentLayoutIcon(custom_icon_paths=[os.path.expanduser("~/.config/qtile/assets/icons/layouts")], scale=0.4, padding=0),
-                widget.Spacer(length=3)
+                widget.Spacer(length=3),
+                widget.TextBox('',
+                               font='Roboto Mono Nerd Font',
+                               fontsize=15,
+                               padding=0,
+                               foreground="#BF616A"),
+                widget.Spacer(length=15),
             ],
             35,
             background='#122125',
@@ -123,7 +130,9 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='ssh-askpass'),  # ssh-askpass
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
-    Match(wm_class='galculator')
+    Match(wm_class='galculator'),
+    Match(wm_class='pomello'),
+    Match(wm_class='qalculate-gtk')
 ], border_focus="#122125")
 auto_fullscreen = True
 focus_on_window_activation = "smart"
@@ -131,7 +140,7 @@ reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
-auto_minimize = True
+auto_minimize = False
 
 @hook.subscribe.startup_once
 def start_once():
