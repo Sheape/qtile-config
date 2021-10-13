@@ -30,8 +30,7 @@
 - If you don't have sudo install (most likely because you have a fresh installation of arch linux). You can type the following commands. \\
 
 - To enter the root user.\\
-  =su=\\
+  =su= \\
 - Type your root password and type the next command which would install qtile. \\
   =pacman -S qtile= \\
-
 - After the installation, you can now logout in your current session, or if you are on TTY you can reboot your machine. \\
