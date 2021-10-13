@@ -9,6 +9,7 @@
   - [[#pre-requisites][Pre-requisites]]
 
 * About
+[[https://raw.githubusercontent.com/Sheape/Assets/master/qtile/Candice_rice_image.png?token=AUUDKTSQVH2GKXJVMKRXP53BMZKJI]]
 ** What is Qtile?
 - [[https://www.qtile.org][Qtile]] is a tiling window manager based on [[https://www.xmonad.org][Xmonad]] but written and can be configured in python. It is similar to [[https://www.awesomewm.org][AwesomeWM]] because of it's implementation in creating custom widgets. However, it is not as flexible and customizable as AwesomeWM.
 ** Why Qtile?
@@ -18,6 +19,7 @@
 * Installation
 ** Pre-requisites
 *** Arch Linux
+- *NOTE*: The installation script is not yet finished, so ignore this. \\
 - You need to install qtile in the standard arch repository. If you already installed my dotfiles, there is a script that allows you to install and setup everything. This configuration doesn't use the [[https://aur.archlinux.org/packages/qtile-git][qtile-git]] package from the arch user repository.
 
   *WARNING:* My script requires *root* privileges from the user and will modify the /etc directory alongside other stuff. It is recommeded to only use this if you recently have reset your hard drive and have a fresh installation of Arch linux.
@@ -33,16 +35,3 @@
   =pacman -S qtile= \\
 
 - After the installation, you can now logout in your current session, or if you are on TTY you can reboot your machine. \\
-
-*** Debian/Ubuntu
-- The scripts that I provided doesn't have any installation for Ubuntu/Debian, so you have to install it manually in the terminal. \\
-
-- To install qtile in Debian/Ubuntu or if the distro is based on either of them, launch the terminal or TTY and type the following command. \\
-
-- Update your system and upgrade it if it's necessary. \\
-  =sudo apt update && sudo apt upgrade=
-
-- Install qtile using apt package manager. \\
-  =sudo apt install qtile=
-
-- Logout from your current session or reboot and login with Qtile being the current session enabled. \\
