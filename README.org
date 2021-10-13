@@ -9,7 +9,7 @@
   - [[#pre-requisites][Pre-requisites]]
 
 * About
-[[file://assets/thumbnails/Candice_rice_image.png]]
+[[./assets/thumbnails/Candice_rice_image.png]]
 ** What is Qtile?
 - [[https://www.qtile.org][Qtile]] is a tiling window manager based on [[https://www.xmonad.org][Xmonad]] but written and can be configured in python. It is similar to [[https://www.awesomewm.org][AwesomeWM]] because of it's implementation in creating custom widgets. However, it is not as flexible and customizable as AwesomeWM.
 ** Why Qtile?
